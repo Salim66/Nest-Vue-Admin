@@ -18,6 +18,10 @@
             <span data-feather="home"></span>
             Roles
           </router-link>
+          <router-link to="/products" active-class="active" class="nav-link">
+            <span data-feather="home"></span>
+            Products
+          </router-link>
         </li>
       </ul>
     </div>
