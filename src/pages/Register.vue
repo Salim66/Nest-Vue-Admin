@@ -1,17 +1,70 @@
 <template lang="">
-  <h1>{{ count }}</h1>
-  <input type="number" v-model="count" />
+  <main class="form-signin">
+    <form>
+      <h1 class="h3 mb-3 fw-normal">Please Register</h1>
+
+      <input class="form-control" placeholder="First Name" /><br />
+
+      <input class="form-control" placeholder="Last Name" /><br />
+
+      <input type="email" class="form-control" placeholder="Email" /><br />
+
+      <input type="password" class="form-control" placeholder="Password" />
+
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Password Confirm"
+      />
+
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+    </form>
+  </main>
 </template>
 
 <script lang="ts">
 import { ref } from 'vue';
-export default {
-  setup() {
-    const count = ref(0);
-
-    return {
-      count,
-    };
-  },
-};
+export default {};
 </script>
+
+<style scoped>
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type='email'] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type='password'] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+</style>
