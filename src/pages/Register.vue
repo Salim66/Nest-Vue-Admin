@@ -1,7 +1,7 @@
 <template lang="">
   <main class="form-signin">
     <form @submit.prevent="submit">
-      <h1 class="h3 mb-3 fw-normal">Please Register</h1>
+      <h1 class="h3 mb-3 fw-normal">Please register</h1>
 
       <input
         v-model="firstName"
