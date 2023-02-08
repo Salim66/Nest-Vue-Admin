@@ -22,11 +22,14 @@
         </div>
         <div class="mb-3">
           <label>Image</label>
-          <input
-            v-model="data.image"
-            class="form-control"
-            placeholder="Image"
-          />
+          <div class="input-group">
+            <input
+              v-model="data.image"
+              class="form-control"
+              placeholder="Image"
+            />
+            <ImageUpload @uploaded="data.image = $event"/>
+          </div>
         </div>
         <div class="mb-3">
           <label>Price</label>
@@ -47,9 +50,13 @@
 import axios from 'axios';
 import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
+import ImageUpload from '@/components/ImageUpload.vue';
 
 export default {
   name: 'Product Create',
+  components: {
+    ImageUpload,
+  },
   setup() {
     const data = reactive({
       title: '',
