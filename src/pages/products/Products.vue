@@ -42,51 +42,30 @@
       </tbody>
     </table>
   </div>
-  <nav class="d-flex justify-content-end">
-    <ul class="pagination">
-      <li class="page-item">
-        <a href="#" class="page-link" @click.prevent="prev"> Previous </a>
-      </li>
-      <li class="page-item">
-        <a href="#" class="page-link" @click.prevent="next"> Next </a>
-      </li>
-    </ul>
-  </nav>
+  <Paginator :lastPage="lastPage" @page-changed="load($event)" />
 </template>
 
 <script lang="ts">
-import { onMounted, ref, watch } from 'vue';
+import { onMounted, ref } from 'vue';
 import axios from 'axios';
 import { Product } from '@/models/product';
+import Paginator from '@/components/paginator.vue';
 export default {
   name: 'Product',
+  components: {
+    Paginator,
+  },
   setup() {
     const products = ref([]);
-    const page = ref(1);
     const lastPage = ref(0);
 
-    const load = async () => {
-      const { data } = await axios.get(`products?page=${page.value}`);
+    const load = async (page = 1) => {
+      const { data } = await axios.get(`products?page=${page}`);
       products.value = data.data;
       lastPage.value = data.meta.last_page;
     };
 
-    // when pagination page is change automaticaly run the load match and jump to the next page
-    watch(page, load);
-
     onMounted(load);
-
-    const next = () => {
-      if (page.value < lastPage.value) {
-        page.value++;
-      }
-    };
-
-    const prev = () => {
-      if (page.value > 1) {
-        page.value--;
-      }
-    };
 
     const del = async (id: number) => {
       if (confirm('Are you sure?')) {
@@ -98,9 +77,9 @@ export default {
 
     return {
       products,
-      prev,
-      next,
+      lastPage,
       del,
+      load,
     };
   },
 };
