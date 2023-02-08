@@ -13,10 +13,20 @@
 <script>
 import NavBar from '@/components/NavBar.vue';
 import MenuBar from '@/components/MenuBar.vue';
+import { onMounted } from 'vue';
+import axios from 'axios';
+
 export default {
+  name: 'Wrapper',
   components: {
     NavBar,
     MenuBar,
+  },
+  setup() {
+    onMounted(async () => {
+      const { data } = await axios.get('user');
+      console.log(data);
+    });
   },
 };
 </script>
