@@ -15,6 +15,7 @@ import NavBar from '@/components/NavBar.vue';
 import MenuBar from '@/components/MenuBar.vue';
 import { onMounted } from 'vue';
 import axios from 'axios';
+import { useRouter } from 'vue-router';
 
 export default {
   name: 'Wrapper',
@@ -23,9 +24,15 @@ export default {
     MenuBar,
   },
   setup() {
+    const router = useRouter();
+
     onMounted(async () => {
-      const { data } = await axios.get('user');
-      console.log(data);
+      try {
+        const { data } = await axios.get('user');
+        console.log(data);
+      } catch (error) {
+        await router.push('/login');
+      }
     });
   },
 };

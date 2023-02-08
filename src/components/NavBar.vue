@@ -5,7 +5,12 @@
       <router-link to="/profile" class="p-2 text-white text-decoration-none">{{
         name
       }}</router-link>
-      <a href="#" class="p-2 text-white text-decoration-none">Logout</a>
+      <router-link
+        to="/login"
+        class="p-2 text-white text-decoration-none"
+        @click.prevent="logout"
+        >Logout</router-link
+      >
     </nav>
   </nav>
 </template>
@@ -24,8 +29,13 @@ export default {
       name.value = data.first_name + ' ' + data.last_name;
     });
 
+    const logout = async () => {
+      await axios.post('logout');
+    };
+
     return {
       name,
+      logout,
     };
   },
 };
