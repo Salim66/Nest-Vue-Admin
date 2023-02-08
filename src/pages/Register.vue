@@ -43,6 +43,7 @@
 
 <script lang="ts">
 import { ref } from 'vue';
+import axios from 'axios';
 export default {
   name: 'Register',
   setup() {
@@ -53,14 +54,16 @@ export default {
     const passwordConfirm = ref('');
 
     // submit form
-    const submit = () => {
-      console.log({
+    const submit = async () => {
+      const { data } = await axios.post('http://localhost:3000/api/register', {
         first_name: firstName.value,
-        lsst_name: lastName.value,
+        last_name: lastName.value,
         email: email.value,
         password: password.value,
         password_confirm: passwordConfirm.value,
       });
+
+      console.log(data);
     };
 
     return {
