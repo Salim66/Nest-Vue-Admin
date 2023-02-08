@@ -1,21 +1,40 @@
 <template lang="">
   <main class="form-signin">
-    <form>
+    <form @submit.prevent="submit">
       <h1 class="h3 mb-3 fw-normal">Please Register</h1>
 
-      <input class="form-control" placeholder="First Name" /><br />
-
-      <input class="form-control" placeholder="Last Name" /><br />
-
-      <input type="email" class="form-control" placeholder="Email" /><br />
-
-      <input type="password" class="form-control" placeholder="Password" />
+      <input
+        v-model="firstName"
+        class="form-control"
+        placeholder="First Name"
+      /><br />
 
       <input
+        v-model="lastName"
+        class="form-control"
+        placeholder="Last Name"
+      /><br />
+
+      <input
+        v-model="email"
+        type="email"
+        class="form-control"
+        placeholder="Email"
+      /><br />
+
+      <input
+        v-model="password"
+        type="password"
+        class="form-control"
+        placeholder="Password"
+      />
+
+      <input
+        v-model="passwordConfirm"
         type="password"
         class="form-control"
         placeholder="Password Confirm"
-      />
+      /><br />
 
       <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
     </form>
@@ -24,7 +43,36 @@
 
 <script lang="ts">
 import { ref } from 'vue';
-export default {};
+export default {
+  name: 'Register',
+  setup() {
+    const firstName = ref('');
+    const lastName = ref('');
+    const email = ref('');
+    const password = ref('');
+    const passwordConfirm = ref('');
+
+    // submit form
+    const submit = () => {
+      console.log({
+        first_name: firstName.value,
+        lsst_name: lastName.value,
+        email: email.value,
+        password: password.value,
+        password_confirm: passwordConfirm.value,
+      });
+    };
+
+    return {
+      firstName,
+      lastName,
+      email,
+      password,
+      passwordConfirm,
+      submit,
+    };
+  },
+};
 </script>
 
 <style scoped>
