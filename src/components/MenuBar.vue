@@ -14,6 +14,10 @@
             <span data-feather="home"></span>
             Users
           </router-link>
+          <router-link to="/roles" active-class="active" class="nav-link">
+            <span data-feather="home"></span>
+            Users
+          </router-link>
         </li>
       </ul>
     </div>
