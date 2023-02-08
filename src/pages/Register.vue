@@ -57,7 +57,7 @@ export default {
 
     // submit form
     const submit = async () => {
-      await axios.post('http://localhost:3000/api/register', {
+      await axios.post('register', {
         first_name: firstName.value,
         last_name: lastName.value,
         email: email.value,
