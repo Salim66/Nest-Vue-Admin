@@ -44,7 +44,7 @@
           </select>
         </div>
 
-        <button class="btn btn-lg btn-primary" type="submit">Create</button>
+        <button class="btn btn-lg btn-primary" type="submit">Save</button>
       </form>
     </div>
   </div>

@@ -38,7 +38,7 @@
   </div>
 </template>
 <script lang="ts">
-import { ref, onMounted, useRouter } from 'vue';
+import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import { Role } from '@/models/role';
 export default {
