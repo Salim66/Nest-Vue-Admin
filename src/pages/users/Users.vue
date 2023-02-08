@@ -23,6 +23,11 @@
           <td>{{ user.role.name }}</td>
           <td>
             <div class="btn-group mr-2">
+              <router-link
+                :to="`/users/${user.id}/edit`"
+                class="btn btn-sm btn-outline-info"
+                >Edit</router-link
+              >
               <a
                 href="#"
                 class="btn btn-sm btn-outline-secondary"
