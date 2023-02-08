@@ -22,6 +22,10 @@
             <span data-feather="home"></span>
             Products
           </router-link>
+          <router-link to="/orders" active-class="active" class="nav-link">
+            <span data-feather="home"></span>
+            Orders
+          </router-link>
         </li>
       </ul>
     </div>
