@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import axios from 'axios';
 export default {
   name: 'Users',
@@ -49,19 +49,19 @@ export default {
       lastPage.value = data.meta.last_page;
     };
 
+    watch(page, load);
+
     onMounted(load);
 
-    const next = async () => {
+    const next = () => {
       if (page.value < lastPage.value) {
         page.value++;
-        await load();
       }
     };
 
-    const prev = async () => {
+    const prev = () => {
       if (page.value > 1) {
         page.value--;
-        await load();
       }
     };
 
