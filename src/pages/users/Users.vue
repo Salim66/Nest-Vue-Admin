@@ -1,4 +1,9 @@
 <template>
+  <div class="pt-2 pb-3 mb-3 border-bottom">
+    <router-link to="/users/create" class="btn btn-sm btn-outline-secondary"
+      >Add</router-link
+    >
+  </div>
   <div class="table-responsive">
     <table class="table table-striped table-sm">
       <thead>
