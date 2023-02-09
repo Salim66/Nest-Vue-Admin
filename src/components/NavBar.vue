@@ -25,7 +25,7 @@ export default {
     const name = ref('');
     const store = useStore();
 
-    const user = computed(() => store.state.user);
+    const user = computed(() => store.state.User.user);
 
     watch(user, () => {
       name.value = user.value.first_name + ' ' + user.value.last_name;
