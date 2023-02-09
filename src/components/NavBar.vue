@@ -16,17 +16,19 @@
 </template>
 
 <script>
-import { onMounted, ref } from 'vue';
+import { watch, ref, computed } from 'vue';
 import axios from 'axios';
+import { useStore } from 'vuex';
 export default {
   name: 'NavBar',
   setup() {
     const name = ref('');
+    const store = useStore();
 
-    onMounted(async () => {
-      const { data } = await axios.get('user');
+    const user = computed(() => store.state.user);
 
-      name.value = data.first_name + ' ' + data.last_name;
+    watch(user, () => {
+      name.value = user.value.first_name + ' ' + user.value.last_name;
     });
 
     const logout = async () => {
