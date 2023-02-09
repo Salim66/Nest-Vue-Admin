@@ -6,7 +6,7 @@
     <div class="position-sticky pt-3">
       <ul class="nav flex-column">
         <li class="nav-item">
-          <router-link to="/" active-class="active" class="nav-link">
+          <router-link to="" active-class="active" class="nav-link">
             <span data-feather="home"></span>
             Dashboard
           </router-link>
@@ -32,6 +32,6 @@
   </nav>
 </template>
 
-<script>
+<script lang="ts">
 export default {};
 </script>

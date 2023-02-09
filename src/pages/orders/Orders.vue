@@ -1,4 +1,12 @@
 <template>
+  <div class="pt-2 pb-3 mb-3 border-bottom">
+    <a
+      href="javascript:void(0)"
+      class="btn btn-sm btn-outline-secondary"
+      @click="exportCSV"
+      >Export CSV</a
+    >
+  </div>
   <div class="table-responsive">
     <table class="table table-sm">
       <thead>
@@ -87,12 +95,22 @@ export default {
     const select = (id: number) =>
       (selected.value = selected.value !== id ? id : 0);
 
+    const exportCSV = async () => {
+      const { data } = await axios.post('export', {}, { responseType: 'blob' });
+      const blob = new Blob([data], { type: 'text/csv' });
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(data);
+      link.download = 'orders.csv';
+      link.click();
+    };
+
     return {
       orders,
       lastPage,
       selected,
       load,
       select,
+      exportCSV,
     };
   },
 };
